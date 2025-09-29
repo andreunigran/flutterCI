@@ -7,8 +7,7 @@ import 'product_form.dart';
 class ProductItem extends StatelessWidget {
   final Product product;
   final void Function(Product)? onEdit;
-  const ProductItem({Key? key, required this.product, this.onEdit})
-    : super(key: key);
+  const ProductItem({super.key, required this.product, this.onEdit});
 
   void _showEdit(BuildContext context) {
     if (onEdit != null) {
@@ -46,6 +45,7 @@ class ProductItem extends StatelessWidget {
       ),
     );
     if (ok == true) {
+      if (!context.mounted) return; // ✅ garante que o widget ainda existe
       await Provider.of<ProductProvider>(
         context,
         listen: false,
