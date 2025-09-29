@@ -48,8 +48,9 @@ class _ProductFormState extends State<ProductForm> {
     } else {
       await provider.update(product);
     }
+    if (!mounted) return; // ✅ garante que o widget ainda existe
 
-    if (mounted) Navigator.of(context).pop();
+    Navigator.of(context).pop();
   }
 
   @override

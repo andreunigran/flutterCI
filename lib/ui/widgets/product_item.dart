@@ -50,6 +50,7 @@ class ProductItem extends StatelessWidget {
         context,
         listen: false,
       ).remove(product.id!);
+      if (!context.mounted) return; // ✅ garante que o widget ainda existe
     }
   }
 

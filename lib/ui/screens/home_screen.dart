@@ -6,7 +6,7 @@ import '../widgets/product_form.dart';
 import '../../models/product.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -16,9 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     // carrega produtos ao iniciar (listen: false para não recriar o widget)
-    Future.microtask(
-      () => Provider.of<ProductProvider>(context, listen: false).loadAll(),
-    );
+    Future.microtask(() async {
+      await Provider.of<ProductProvider>(context, listen: false).loadAll();
+      if (!mounted) return; // ✅ evita usar context se widget foi desmontado
+      setState(() {}); // opcional se quiser atualizar UI
+    });
   }
 
   void _openForm([Product? product]) {
