@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:produtos/data/db_provider.dart';
 import 'package:produtos/data/product_dao.dart';
 import 'package:produtos/models/product.dart';

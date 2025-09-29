@@ -5,7 +5,7 @@ import '../../providers/product_provider.dart';
 
 class ProductForm extends StatefulWidget {
   final Product? product;
-  const ProductForm({Key? key, this.product}) : super(key: key);
+  const ProductForm({super.key, this.product});
 
   @override
   State<ProductForm> createState() => _ProductFormState();
