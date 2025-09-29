@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     // carrega produtos ao iniciar (listen: false para não recriar o widget)
     Future.microtask(() async {
-      if (!mounted) return; // ✅ check before using context
       await Provider.of<ProductProvider>(context, listen: false).loadAll();
       if (!mounted) return;
       setState(() {});
