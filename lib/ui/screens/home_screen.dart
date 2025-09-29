@@ -17,9 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     // carrega produtos ao iniciar (listen: false para não recriar o widget)
     Future.microtask(() async {
+      if (!mounted) return; // ✅ check before using context
       await Provider.of<ProductProvider>(context, listen: false).loadAll();
-      if (!mounted) return; // ✅ evita usar context se widget foi desmontado
-      setState(() {}); // opcional se quiser atualizar UI
+      if (!mounted) return;
+      setState(() {});
     });
   }
 
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return ListView.separated(
             padding: const EdgeInsets.all(8),
             itemCount: items.length,
-            separatorBuilder: (_, __) => const Divider(),
+            separatorBuilder: (_, _) => const Divider(),
             itemBuilder: (context, idx) => ProductItem(
               product: items[idx],
               onEdit: (_) => _openForm(items[idx]),
