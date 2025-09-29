@@ -25,7 +25,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          cache: true  # apenas cache, sem flutter-version
+            flutter-version: '3.9.12'
+            cache: true  # apenas cache, sem flutter-version
 
       # 4. Baixar dependências do projeto
       - name: Pub get
