@@ -25,8 +25,11 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
-          channel: 'stable'
+           # use a versão estável mais recente
+          flutter-version: 'latest'
+          # ou fixe, por exemplo:
+          # flutter-version: '3.24.3'
+          cache: true
 
       # 4. Baixar dependências do projeto
       - name: Pub get
